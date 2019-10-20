@@ -1,0 +1,7 @@
+extends layout.pug
+
+block content
+  h1 Top 20
+  ol
+    each competitor in competitors.slice(0, 20)
+      include competitor.pug

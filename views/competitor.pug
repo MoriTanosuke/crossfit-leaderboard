@@ -1,0 +1,17 @@
+div(class='child')
+    //img(height=24, width=32, class='competitor_flag', id=competitor.entrant.countryOfOriginCode.toLowerCase())
+    img(height=48, width=48,
+     class='competitor_avatar',
+     id=competitor.entrant.profilePicS3key,
+     title=competitor.entrant.firstName + ' ' + competitor.entrant.lastName,
+     alt=competitor.entrant.firstName + ' ' + competitor.entrant.lastName,
+      src='https://profilepicsbucket.crossfit.com/pukie.png')
+    | &nbsp;#{competitor.entrant.competitorName}&nbsp;
+    if competitor.entrant.gender == 'M'
+      i(class='fas fa-mars')
+    else if competitor.entrant.gender == 'F'
+      i(class='fas fa-venus')
+    else
+      i(class='fas fa-transgender-alt')
+    | , rank #{competitor.overallRank}
+    //| #{competitor.entrant.gender}

@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  p The Team:
+    div(class='parent')
+      each competitor in competitors
+        include competitor.pug

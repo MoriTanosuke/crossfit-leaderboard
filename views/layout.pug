@@ -1,0 +1,39 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/fontawesome/css/all.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+  body
+    div(class='container')
+      h1 Leaderboard
+      nav
+        a(href='/') Home
+        |  &middot; 
+        a(href='/top') Top 20
+        |  &middot; 
+        a(href='/members') Members
+        |  &middot;
+        a(href='/map') Map
+        |  &middot;
+        a(href='/changelog') Changelog
+      p
+        include tweet.pug
+        include busy.pug
+      hr
+      block content
+      hr
+      include footer.pug
+    block scripts
+    script.
+      let avatars = document.getElementsByClassName('competitor_avatar');
+      for(i in avatars) {
+        avatars[i].src = 'https://profilepicsbucket.crossfit.com/' + avatars[i].id;
+      }
+      let flags = document.getElementsByClassName('competitor_flag');
+      for(i in flags) {
+        flags[i].src = 'https://assets.crossfit.com/build/img/sites/games/country-flags/' + flags[i].id + '.svg';
+      }

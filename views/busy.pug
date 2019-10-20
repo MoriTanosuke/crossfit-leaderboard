@@ -1,0 +1,13 @@
+if busy
+  div
+    div(class="progress")
+      div(class="progress-bar w-" + progress,
+        role="progressbar",
+        aria-valuenow=currentPage,
+        aria-valuemin="0",
+        aria-valuemax=totalPages)
+    p Data is still loading. Reload your page.
+else
+  div
+    p(class='small') Last update of data:
+      span= last_updated

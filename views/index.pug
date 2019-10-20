@@ -1,0 +1,41 @@
+extends layout
+
+block scripts
+  script(src="https://code.highcharts.com/highcharts.js")
+  script.
+    document.addEventListener('DOMContentLoaded', function () {
+      var ageBrackets = !{JSON.stringify(ageBrackets)};
+      var list = [];
+      for (var key in ageBrackets) {
+        var entry = [parseInt(key, 10), ageBrackets[key]];
+        list.push(entry);
+      }
+      var ageChart = new Highcharts.chart('ageContainer', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Ages'
+        },
+        xAxis: {
+            title: {
+                text: 'Age'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Members'
+            }
+        },
+        series: [{
+            showInLegend: false,
+            data: list
+        }]
+      });
+    });
+
+block content
+  p
+    span #{gender['F']} female, #{gender['M']} male
+  h2 Age distribution
+  div(id='ageContainer')

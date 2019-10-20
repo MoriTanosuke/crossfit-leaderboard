@@ -1,0 +1,46 @@
+extends layout
+
+block scripts
+  script(src="https://code.highcharts.com/maps/highmaps.js")
+  script(src="https://code.highcharts.com/mapdata/custom/world.js")
+  script.
+    document.addEventListener('DOMContentLoaded', function () {
+      var countryCodes = !{JSON.stringify(countryCodes)};
+      var list = [];
+      for (var key in countryCodes) {
+        var entry = [key.toLowerCase(), countryCodes[key]];
+        list.push(entry);
+      }
+      var mapChart = new Highcharts.mapChart('mapContainer', {
+        title: {text: 'Members per country'},
+        series: [{
+          showInLegend: false,
+          mapData: Highcharts.maps['custom/world'],
+          data: list
+        }],
+        colorAxis: {
+          dataClasses: [{
+              to: 5,
+              color: '#0578C9'
+          }, {
+              from: 6,
+              to: 15,
+              color: '#045E9E'
+          }, {
+              from: 16,
+              to: 50,
+              color: "#045289"
+          }, {
+              from: 51,
+              to: 100,
+              color: "#036675"
+          }, {
+              from: 101,
+              color: "#033B62"
+          }]
+        },
+      });
+    });
+
+block content
+  div(id='mapContainer')

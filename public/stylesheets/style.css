@@ -1,0 +1,22 @@
+body {
+  padding: 50px;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+footer {
+  font-size: small;
+  text-align: center;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.parent {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.child {
+  margin: auto;  /* Magic! */
+}
